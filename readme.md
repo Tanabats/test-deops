@@ -30,6 +30,8 @@ How to deploy application and mongodb on GKE cluster with Jenkins CI and ArgoCD 
 
 ### Install gcloud command https://cloud.google.com/sdk/docs/install
 
+Access to Cluster2
+
 Run command `gcloud container clusters get-credentials <clustername> --region asia-southeast1 --project <projectid>` for get GKE Credential
   
 `kubectl create namespace mongodb`
@@ -86,8 +88,11 @@ This job for update docker image tag in deployment manifest (Deploy/deployment.y
 
 ### Create GitOps CD process
 
+This argocd will deploy manifest from git repo https://github.com/Tanabats/test-deops/tree/master/Deploy  to Cluster
+
 ```
 kubectl create namespace argocd
+kubectl create namespace app
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 kubectl apply -n argocd -f GitOps/application.yml
 ```
