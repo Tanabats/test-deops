@@ -13,16 +13,21 @@ How to deploy application and mongodb on GKE cluster with Jenkins CI and ArgoCD 
 
 
 `cd Terraform`
+
 1.1 VPC run `terraform apply` on VPC folder
+
 **For** Deploy VPC and 3 Subnet and Firewall rules
 
 1.2 VPC run `terraform apply` on Cluster1 folder
+
 **For** Deploy GKE Cluster1
 
 1.3 VPC `run terraform apply` on Cluster2 folder
+
 **For** Deploy GKE Cluster2
 
 1.4 VPC `run terraform` apply on VM folder
+
 **For** Deploy VM with preinstall Docker,Jenkins Server, Grafana
 
   
@@ -64,7 +69,7 @@ Go to VM server and get Jenkins password
 
 run `sudo cat /var/lib/jenkins/secrets/initialAdminPassword`
 
-Open browser with PubicIP VMserver with port 8080
+Open browser with PublicIP VM server with port 8080
 
 Login with root and Jenkins password
 Install recommend plugin and Docker plugin
