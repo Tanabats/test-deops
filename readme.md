@@ -7,15 +7,18 @@
 
 
 
-cd Terraform
-1.1 VPC run terraform apply on VPC folder
-**For** create network VPC and Firewall rules
-1.2 VPC run terraform apply on Cluster1 folder
-**For** create GKE Cluster1
-1.3 VPC run terraform apply on Cluster2 folder
-**For** create GKE Cluster2
-1.4 VPC run terraform apply on VM folder
-**For** create VM with preinstall Docker,Jenkins Server, Grafana
+`cd Terraform`
+1.1 VPC run `terraform apply` on VPC folder
+**For** Deploy VPC and 3 Subnet and Firewall rules
+
+1.2 VPC run `terraform apply` on Cluster1 folder
+**For** Deploy GKE Cluster1
+
+1.3 VPC `run terraform apply` on Cluster2 folder
+**For** Deploy GKE Cluster2
+
+1.4 VPC `run terraform` apply on VM folder
+**For** Deploy VM with preinstall Docker,Jenkins Server, Grafana
 
   
 # 2. Install Mongodb replica set, Prometheus and ArogoCD
@@ -27,7 +30,7 @@ Run command `gcloud container clusters get-credentials <clustername> --region as
 `kubectl create namespace mongodb`
 `kubectl create namespace monitor`
 
-### create Helm chart on Cluster2
+### Create Helm chart on Cluster2
 ```
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -38,7 +41,7 @@ helm install my-release bitnami/mongodb
 ```
 
 
-### create Prometheus Internal Loadbalance
+### Create Prometheus Internal Loadbalance
 `kubectl apply -f helm/prometheus-internal-ingress.yml -n monitor`
 
   
@@ -48,9 +51,8 @@ run `kubectl get pod -A` to check all resources deploy success or not
 
   
 
-## Create GitOps CD process
+### Create GitOps CD process
 
-  
 ```
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
@@ -73,19 +75,27 @@ Setting dockerhub credential and github credential
 
 
 ### Create JOB Pipeline Build
-With pipeline from scritp https://github.com/Tanabats/test-deops.git
+With pipeline from script https://github.com/Tanabats/test-deops.git
+
 Scritp path Jenkinsfile
+
 This job for create docker from dockerfile in project repo and push to docker hub
 
 ### Create JOB Pipeline updatemanifest
-With pipeline from scritp https://github.com/Tanabats/test-deops.git
+With pipeline from script https://github.com/Tanabats/test-deops.git
+
 Scritp path Deploy/Jenkinsfile
+
 This job for update docker image tag in deployment manifest (Deploy/deployment.yaml)
 
 
 ### Setting Grafana Dashboard with Prometheus mertrics
 Open browser with PubicIP VMserver with port 3000
+
 Login Grafana with user admin pass admin
+
 Go to setting add Data source prometheus with prometheus internal url (kubectl get ingress -n monitor)
+
 Go to Dasboard and import dasboard id 315 (from grafana community)
+
 ```
