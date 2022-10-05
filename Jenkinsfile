@@ -9,10 +9,10 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("hamtaro702/test")
+       app = docker.build("hamtaro702/test:v3")
     }
 
-    }
+    
 
     stage('Push image') {
         
