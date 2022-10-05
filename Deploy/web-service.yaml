@@ -1,0 +1,17 @@
+# web-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-api-svc
+  namespace: app
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+spec:
+  ports:
+  - name: mongodb-api
+    port: 80
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: mongodb-api
+  type: ClusterIP

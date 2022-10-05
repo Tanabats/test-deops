@@ -1,0 +1,28 @@
+# web-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mongodb-api
+  name: mongodb-api
+spec:
+  selector:
+    matchLabels:
+      app: mongodb-api
+  minReadySeconds: 60
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mongodb-api
+    spec:
+      containers:
+      - image: hamtaro702/test:v9
+        name: mongodb-api
+        env:
+          - name: MONGODB_CONNECTION
+            value: "mongodb://root:kL9xrriy3L@my-release-mongodb-headless.mongodb:27017/test"
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+      terminationGracePeriodSeconds: 90

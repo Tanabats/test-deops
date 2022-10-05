@@ -13,7 +13,9 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-mongoose.connect('mongodb://10.184.9.116:27017/cicd', { useNewUrlParser: true});
+var connection = "mongodb://root:kL9xrriy3L@my-release-mongodb-headless.mongodb:27017"
+console.log(connection)
+mongoose.connect(connection, { useNewUrlParser: true});
 var db = mongoose.connection;
 
 if(!db)
@@ -21,11 +23,13 @@ if(!db)
 else
     console.log("Db connected successfully")
 
-var port = process.env.PORT || 8090;
+var port = process.env.PORT || 8000;
 
 app.get('/alive', (req, res) => res.send('alive'));
+app.get('/', (req, res) => res.send('alive'));
 
 app.use('/api', apiRoutes);
+
 app.listen(port, function () {
     console.log("Running on port " + port);
 });
