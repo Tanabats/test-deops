@@ -54,18 +54,8 @@ run `kubectl get pod -A` to check all resources deploy success or not
 
   
 
-  
 
-### Create GitOps CD process
-
-```
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-kubectl apply -n argocd -f GitOps/application.yml
-```
-
-
-# 3.Deploy Application with Jenkins CI and Create DashBoard
+# 3.Deploy Application with Jenkins CI, ArgoCD and Create DashBoard
 
 
 Go to VM server and get Jenkins password
@@ -92,6 +82,15 @@ With pipeline from script https://github.com/Tanabats/test-deops.git
 Scritp path Deploy/Jenkinsfile
 
 This job for update docker image tag in deployment manifest (Deploy/deployment.yaml)
+
+
+### Create GitOps CD process
+
+```
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl apply -n argocd -f GitOps/application.yml
+```
 
 
 ### Setting Grafana Dashboard with Prometheus mertrics
