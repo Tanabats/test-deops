@@ -9,7 +9,7 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("hamtaro702/test:v3")
+       app = docker.build("hamtaro702/test")
     }
 
     
@@ -23,6 +23,6 @@ node {
     
     stage('Trigger ManifestUpdate') {
                 echo "triggering updatemanifestjob"
-                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: "v"+env.BUILD_NUMBER)]
         }
 }
