@@ -17,7 +17,7 @@ spec:
         app: mongodb-api
     spec:
       containers:
-      - image: hamtaro702/test:v9
+      - image: hamtaro702/test:16
         name: mongodb-api
         env:
           - name: MONGODB_CONNECTION
