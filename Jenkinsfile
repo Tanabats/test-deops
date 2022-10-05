@@ -17,12 +17,12 @@ node {
     stage('Push image') {
         
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-            app.push("v+${env.BUILD_NUMBER}")
+            app.push("${env.BUILD_NUMBER}")
         }
     }
     
     stage('Trigger ManifestUpdate') {
                 echo "triggering updatemanifestjob"
-                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: "v"+env.BUILD_NUMBER)]
+                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
         }
 }
