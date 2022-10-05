@@ -1,10 +1,9 @@
 
 # Deploy Infra and Application on GKE
 
-  
+ ![Devops Diagram drawio](https://user-images.githubusercontent.com/22216934/194110881-df9de51b-5977-424d-b233-e8dab5bfb860.png) 
 
 # 1. Deploy infra on GCP with Terraform
-
 
 
 `cd Terraform`
