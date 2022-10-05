@@ -1,0 +1,15 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test
+  namespace: argocd
+spec:
+  destination:
+    namespace: app
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: Deploy/
+    repoURL: https://github.com/Tanabats/test-deops
+    targetRevision: HEAD
