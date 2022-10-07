@@ -112,4 +112,18 @@ Go to setting add Data source prometheus with prometheus internal url (kubectl g
 
 Go to Dasboard and import dasboard id 315 (from grafana community)
 
+
+
+### Create Kong API Gateway on Cluster1 and Setting API Gateway route to API
 ```
+Access to Cluster1
+helm repo add kong https://charts.konghq.com
+helm repo update
+create ns kong
+helm install kong/kong --generate-name --set ingressController.installCRDs=false -n kong
+
+```
+
+After Kong API Gateway on Cluster1 Ready
+Setup Kong Service to Internal URL of API cluster2
+Setup Kong Route (Which Host,path route to service) 
