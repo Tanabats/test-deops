@@ -125,5 +125,8 @@ helm install kong/kong --generate-name --set ingressController.installCRDs=false
 ```
 
 After Kong API Gateway on Cluster1 Ready
+
 Setup Kong Service to Internal URL of API cluster2
-Setup Kong Route (Which Host,path route to service) 
+
+Setup Kong Route (Which Host,path route to service)
+
