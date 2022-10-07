@@ -120,7 +120,7 @@ Access to Cluster1
 helm repo add kong https://charts.konghq.com
 helm repo update
 create ns kong
-helm install kong/kong --generate-name --set ingressController.installCRDs=false -n kong
+helm upgrade -i -f helm/kong-values.yaml kong/kong --generate-name --set ingressController.installCRDs=false -n kong
 
 ```
 
